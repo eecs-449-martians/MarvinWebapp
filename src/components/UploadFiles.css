@@ -1,0 +1,97 @@
+  .dropzone {
+    text-align: center;
+    padding: 60px;
+    border: 3px dashed #dedede;
+    background-color: #fafafa;
+    color: #ababab;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .dropzone:hover {
+    color: #AAAAAA;
+    background-color: #eeeeff;
+    border: 4px dashed #AAAAAA;
+    font-weight: bold;
+  }
+
+  .alert-light {
+    background: transparent;
+    border: transparent;
+  }
+  
+
+  .selected-file-wrapper {
+    text-align: center;
+  }
+  
+  .selected-file {
+    color: #000; 
+    font-weight: bold;
+  }
+
+  .card-header {
+    font-weight: bold;
+  }
+
+  .card-text-big {
+    font-size:17.5px;
+  }
+
+  .btn-success:enabled:hover {
+    font-weight: bold;
+  }
+
+  .btn-delete {
+    background-color: #FF3333;
+    color: white;
+    font-size:12.5px;
+    height:20px;
+    width:60px;
+    padding: 0px 0px 1.5px 0px;
+  }
+  .btn-delete:hover {
+    background-color: #E00000;
+    color: white;
+    font-weight: bold;
+  }
+
+ 
+  .btn-delete-all:enabled {
+    background-color: #FF3333;
+    color: white;
+  }
+  .btn-delete-all:enabled:hover {
+    background-color: #E00000;
+    font-weight: bold;
+    color: white;
+  }
+  .btn-delete-all:disabled {
+    background-color: #FF6666;
+    color: white;
+  }
+
+
+  .btn-go-to-chat:enabled {
+    background-color: #3D85FF;
+    color: white;
+    height:35px;
+    width:150px;
+    padding: 0.25px 0px 0.25px 0px;
+    vertical-align: middle;
+    float: right;
+  }
+  .btn-go-to-chat:enabled:hover {
+    background-color: #3574DF;
+    font-weight: bold;
+    color: white;
+  }
+  .btn-go-to-chat:disabled {
+    background-color: #4B8EFF;
+    color: white;
+    height:35px;
+    width:150px;
+    padding: 0.25px 0px 0.25px 0px;
+    vertical-align: middle;
+    float: right;
+  }

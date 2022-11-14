@@ -1,0 +1,12 @@
+.check-table {
+    margin: auto;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-align: center;
+    width: 25%;
+    height: 30%;
+}
+
+.connect-btn:hover {
+    font-weight: bold;
+}

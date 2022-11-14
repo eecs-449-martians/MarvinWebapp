@@ -1,0 +1,52 @@
+.center {
+    text-align: center;
+    color: blue;
+}    
+
+.title-text {
+    color: #404040;
+    text-align: center;
+    font-size: 215%;
+    font-weight: bold;
+}
+
+.sub-text {
+    color: #404040;
+    text-align: center;
+    font-size: 125%;
+}
+
+.btn-padding {
+    padding-bottom: 3%;
+}
+
+.btn-go-to-upload-from-start {
+    background-color: #00BB00;
+    color: white;
+    height:40px;
+    width:200px;
+    vertical-align: middle;
+}
+.btn-go-to-upload-from-start:hover {
+    background-color: #00AA00;
+    font-weight: bold;
+    height:50px;
+    width:225px;
+    color: white;
+}
+
+.logo {
+    display: flex;
+    margin: auto;
+    width: 25%;
+    height: 25%;
+}
+
+.home {
+    opacity: 0;
+    transition: 2s opacity;
+}
+
+.fade-in {
+    opacity: 1;
+}
