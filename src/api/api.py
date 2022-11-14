@@ -41,6 +41,8 @@ def upload_pdfs():
 
     # Make sure the file doesnt already exist
     folder = "../pdf_uploads/"
+    if (not os.path.exists(Path(folder))):
+        os.mkdir(Path(folder))
     if fileobj.filename in os.listdir(folder):
         message = "'" + fileobj.filename + "' is already uploaded"
         return {"message": message, "already_exists": True}
