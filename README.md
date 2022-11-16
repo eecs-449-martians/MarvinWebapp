@@ -1,8 +1,8 @@
 # Professor Marvin Web App
 
-This is the code for Professor Marvin's web app - EECS 449 (Conversational AI) @ University of Michigan
-For optimal experience, please use the web app on the **Google Chrome Browser at 80% zoom**
-Code developed by Arjav Patel (@apatel66) as part of The Martians team
+- This is the code for Professor Marvin's web app - EECS 449 (Conversational AI) @ University of Michigan
+- For optimal experience, please use the web app on the **Google Chrome Browser at 80% zoom**
+- Code developed by Arjav Patel (@apatel66) as part of The Martians team
 
 ## *Run The App*
 1. Download / Clone the repo
