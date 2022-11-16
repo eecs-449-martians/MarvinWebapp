@@ -15,7 +15,7 @@
 
 ## *Ports*
 - The web app runs on [http://localhost:3000](http://localhost:3000). Open it to view in your browser
-- The Flask API runs runs in the backgroudn on [http://localhost:5000](http://localhost:5000)
+- The Flask API runs in the background on [http://localhost:5000](http://localhost:5000)
 
 ## *Flask API*
 - External Endpoints (Other components should use)
