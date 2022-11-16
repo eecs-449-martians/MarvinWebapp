@@ -1,12 +1,12 @@
 # Professor Marvin Web App
 
 - This is the code for Professor Marvin's web app - EECS 449 (Conversational AI) @ University of Michigan
-- For optimal experience, please use the web app on the **Google Chrome Browser at 80% zoom**
+- For optimal experience, please use the web app on the *Google Chrome Browser at 80% zoom*
 - Code developed by Arjav Patel (@apatel66) as part of The Martians team
 
 ## *Run The App*
 1. Download / Clone the repo
-2. Navigate into the directory in **two** terminals
+2. Navigate into the directory in *two* terminals
 3. On one terminal run the command `yarn start-api`
     - Triggers script to start the Flask API used by the web app
 4. On the other terminal, run the command `yarn start`
