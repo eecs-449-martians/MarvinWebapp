@@ -7,11 +7,9 @@ import shutil
 from pathlib import Path
 from urllib.parse import urlparse
 
-
 app = flask.Flask(__name__)
 
 messages = [] # contains message --> [message_type (0: from_user, 1: from_marvin, 2: placeholder), content]
-
 
 @app.route('/reset')
 def reset_app():
@@ -24,12 +22,6 @@ def reset_app():
             print('Failed to delete %s. Reason: %s' % (curr_file, e))
     message = "All files successfully deleted"
     return {"message": message}
-
-
-@app.route('/time')
-def get_current_time():
-    return {'time': time.time()}
-
 
 @app.route('/upload', methods=["POST"])
 def upload_pdfs():
@@ -52,7 +44,6 @@ def upload_pdfs():
     message = "'" + fileobj.filename + "' was uploaded successfully"
     return {"message": message, "already_exists": False}
 
-
 @app.route('/get_files')
 def get_files():
     json_string = "{\n\"data\": [ "
@@ -71,7 +62,6 @@ def get_files():
     json_string += "\n]\n}"
     json_object = json.loads(json_string)
     return json_object
-
 
 @app.route('/remove_file', methods=["POST"])
 def remove_files():
