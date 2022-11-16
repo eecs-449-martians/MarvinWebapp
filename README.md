@@ -64,6 +64,9 @@
     - `/get_messages`
         - Gets all messages saved in the list
         - Appends blank messages if not enough already (makes table look nice)
+        - Recieves
+            - `Nothing (GET Endpoint)`
+        - Returns
             - `{"messages": [
                   {
                     "message": {"message_type": ..., "content": ...}
