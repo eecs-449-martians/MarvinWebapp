@@ -12,6 +12,7 @@
 4. On the other terminal, run the command `yarn start`
     - Triggers script to compile and run the React web app
 5. You will probably need to download the necessary React and Flask dependencies
+6. If an error occurs, try running `export FLASK_APP=api.py` in the terminal to set the environment variable
 
 ## *Ports*
 - The web app runs on [http://localhost:3000](http://localhost:3000). Open it to view in your browser
