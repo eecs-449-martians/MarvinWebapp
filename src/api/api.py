@@ -4,6 +4,7 @@ import flask
 import json
 import os
 import shutil
+import requests
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -51,7 +52,9 @@ def get_files():
     index = 0
     num_files = len(os.listdir(folder))
     for filename in os.listdir(folder):
-        curr_file = "file://" + folder + filename
+
+        #curr_file = "file://" + folder + filename
+        curr_file = folder + filename
         json_string += "\n\t{ "
         json_string += "\n\t\t\"file\": { \"name\": \"" + filename + "\", \"url\": \"" + curr_file + "\" }, "
         json_string += "\n\t\t\"index\": \"" + str(index) + "\""
@@ -61,7 +64,32 @@ def get_files():
         index += 1
     json_string += "\n]\n}"
     json_object = json.loads(json_string)
-    return json_object
+
+    # here I call the pdf api for each .pdf file uploaded.
+    # THIS MAY OR MAY NOT BE THE ENPOINT WE WANT TO DO THIS IN, DEPENDING ON IMPLEMENTATION OF CHATBOT LOGIC so the rest of the function is subject to move. 
+    pdf_texts = []
+    for i in range(len(json_object['data'])):
+        query = {'url': json_object['data'][i]['file']['url']}
+        pdf_texts.append(requests.post("http://localhost:8001/pdf/to_text/", params=query))
+
+    # here I call the nlp api for each text version of the given files to get question and answers.
+    # NOTE: this may or not be correct, I am having trouble testing the nlp flask server 
+    # basically this gives a json object of question and answers
+    nlp = []
+    questions = []
+    answers = []
+    qas = []
+    # untested
+    for text in pdf_texts:
+        r = requests.post("http://localhost:8000/nlp/genqa/", params=query)
+        questions.append(r["questions"])
+        answers.append(r["answers"])
+        r = requests.post("http://localhost:8000/nlp/genqa2/", params=query)
+        qas.append(r["qas"])
+    nlp["questions"] = questions
+    nlp["answers"] = answers
+    nlp["qas"] = qas
+    return flask.jsonify(nlp)
 
 @app.route('/remove_file', methods=["POST"])
 def remove_files():
@@ -107,7 +135,8 @@ def get_messages():
 @app.route('/to_marvin', methods=["POST"])
 def to_marvin():
     content = flask.request.form['content']
-    messages.append([0, content])
+    messages.append([0, content]) 
+    # make api call to conv engine
 
     response_message = "Message sent to Marvin successfully"
     return {"message": response_message}
