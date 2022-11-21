@@ -11,18 +11,18 @@ import connor from "./images/arjav.jpg";
 import joe from "./images/arjav.jpg";
 import alex from "./images/alex.jpg";
 import arjav from "./images/arjav.jpg";
-import josh from "./images/arjav.jpg";
+import josh from "./images/josh.jpg";
 
-function person(name, pic, role, link){
+function person(name, pic, role, link) {
   return (
     <td className="check-table">
-      <Card style={{ width: '80%', borderRadius: '8%'}}>
-        <Card.Img style={{borderTopRightRadius: '8%', borderTopLeftRadius: '8%'}} src={pic} />
+      <Card style={{ width: '80%', borderRadius: '8%' }}>
+        <Card.Img style={{ borderTopRightRadius: '8%', borderTopLeftRadius: '8%' }} src={pic} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>
             {role}
-          </Card.Text> 
+          </Card.Text>
           <a href={link} target="_blank"><Button className="connect-btn" variant="primary">Connect</Button></a>
         </Card.Body>
       </Card>
@@ -44,7 +44,7 @@ function About() {
             </p>
             <br></br>
             <section>
-              <h4 style={{fontWeight: '600'}}>
+              <h4 style={{ fontWeight: '600' }}>
                 Click on the links below to see how the project evolved over the semester
               </h4>
               <ul>
@@ -55,24 +55,24 @@ function About() {
               </ul>
             </section>
             <br></br>
-              <h4 style={{fontWeight: '600'}}>
-                Meet the <s style={{textDecorationLine: 'line-through', textDecorationThickness: '14%'}}>Creators</s> Martians
-              </h4>
-              <table>
-                <tbody>
-                  <tr>
-                    {person("Zach Eichenberger", zach, "Front-End Developer",  "https://www.linkedin.com/in/zachary-eichenberger")}
-                    {person("Ray Jin", ray, "Front-End Developer",  "https://www.linkedin.com/in/arjavpa/")}
-                    {person("Connor Landay", connor, "Front-End Developer",  "https://www.linkedin.com/in/arjavpa/")}
-                    {person("Joe Massa", joe, "Front-End Developer",  "https://www.linkedin.com/in/arjavpa/")}
-                  </tr>
-                  <tr>
-                    {person("Alex Pakkala", alex, "Orchestrator",  "https://www.linkedin.com/in/alexander-pakkala-7934911b6/")}
-                    {person("Arjav Patel", arjav, "Front-End Developer",  "https://www.linkedin.com/in/arjavpa/")}
-                    {person("Josh Silverberg", josh, "Front-End Developer",  "https://www.linkedin.com/in/arjavpa/")}
-                  </tr>
-                </tbody>
-              </table>
+            <h4 style={{ fontWeight: '600' }}>
+              Meet the <s style={{ textDecorationLine: 'line-through', textDecorationThickness: '14%' }}>Creators</s> Martians
+            </h4>
+            <table>
+              <tbody>
+                <tr>
+                  {person("Zach Eichenberger", zach, "PDF Extraction", "https://www.linkedin.com/in/zachary-eichenberger")}
+                  {person("Ray Jin", ray, "Front-End Developer", "https://www.linkedin.com/in/arjavpa/")}
+                  {person("Connor Landay", connor, "Front-End Developer", "https://www.linkedin.com/in/arjavpa/")}
+                  {person("Joe Massa", joe, "Front-End Developer", "https://www.linkedin.com/in/arjavpa/")}
+                </tr>
+                <tr>
+                  {person("Alex Pakkala", alex, "Orchestrator", "https://www.linkedin.com/in/alexander-pakkala-7934911b6/")}
+                  {person("Arjav Patel", arjav, "Front-End and UI", "https://www.linkedin.com/in/arjavpa/")}
+                  {person("Josh Silverberg", josh, "NLP", "https://www.linkedin.com/in/joshua-silverberg/")}
+                </tr>
+              </tbody>
+            </table>
 
           </div>
         </div>
