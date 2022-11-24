@@ -79,13 +79,15 @@ def get_files():
     questions = []
     answers = []
     qas = []
-    # untested
+    # untested -> Josh changed query to work with NLP
     for text in pdf_texts:
-        r = requests.post("http://localhost:8000/nlp/genqa/", params=query)
-        questions.append(r["questions"])
-        answers.append(r["answers"])
-        r = requests.post("http://localhost:8000/nlp/genqa2/", params=query)
+        rq_body = {"text": text}
+        r = requests.post("http://localhost:8000/nlp/genqa/", json=rq_body)
         qas.append(r["qas"])
+    
+    for qa_pair in qas:
+        questions.append(qa_pair["question"])
+        answers.append(qa_pair["answer"])
     nlp["questions"] = questions
     nlp["answers"] = answers
     nlp["qas"] = qas
