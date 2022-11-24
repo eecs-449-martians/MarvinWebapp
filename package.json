@@ -18,7 +18,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start-api": "cd src/api && source env/bin/activate && FLASK_APP=api.py flask run --no-debugger",
+    "start-api": "cd src/api && source env/bin/activate && FLASK_APP=api.py python3 -m flask run --no-debugger",
     "start": "DANGEROUSLY_DISABLE_HOST_CHECK=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
