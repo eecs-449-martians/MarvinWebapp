@@ -7,7 +7,7 @@ import midpoint_update from "./static_files/midpoint_update.pdf";
 import final_presentation from "./static_files/midpoint_update.pdf";
 import zach from "./images/zach.jpg";
 import ray from "./images/ray.jpg";
-import connor from "./images/arjav.jpg";
+import connor from "./images/connor.jpg";
 import joe from "./images/joe.jpg";
 import alex from "./images/alex.jpg";
 import arjav from "./images/arjav.jpg";
@@ -63,7 +63,7 @@ function About() {
                 <tr>
                   {person("Zach Eichenberger", zach, "PDF Extraction", "https://www.linkedin.com/in/zachary-eichenberger")}
                   {person("Ray Jin", ray, "Chatbot", "https://www.linkedin.com/in/ray-jin-6b2611192")}
-                  {person("Connor Landay", connor, "Front-End Developer", "https://www.linkedin.com/in/arjavpa/")}
+                  {person("Connor Landay", connor, "Chatbot", "https://www.linkedin.com/in/connor-landay-b50a55170/")}
                   {person("Joe Massa", joe, "NLP", "https://www.linkedin.com/in/joseph-massa-0497ba1b8/")}
                 </tr>
                 <tr>
