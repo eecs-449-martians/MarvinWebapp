@@ -6,9 +6,9 @@ import project_pitch from "./static_files/project_pitch.pdf";
 import midpoint_update from "./static_files/midpoint_update.pdf";
 import final_presentation from "./static_files/midpoint_update.pdf";
 import zach from "./images/zach.jpg";
-import ray from "./images/arjav.jpg";
+import ray from "./images/ray.jpg";
 import connor from "./images/arjav.jpg";
-import joe from "./images/arjav.jpg";
+import joe from "./images/joe.jpg";
 import alex from "./images/alex.jpg";
 import arjav from "./images/arjav.jpg";
 import josh from "./images/josh.jpg";
@@ -62,9 +62,9 @@ function About() {
               <tbody>
                 <tr>
                   {person("Zach Eichenberger", zach, "PDF Extraction", "https://www.linkedin.com/in/zachary-eichenberger")}
-                  {person("Ray Jin", ray, "Front-End Developer", "https://www.linkedin.com/in/arjavpa/")}
+                  {person("Ray Jin", ray, "Chatbot", "https://www.linkedin.com/in/ray-jin-6b2611192")}
                   {person("Connor Landay", connor, "Front-End Developer", "https://www.linkedin.com/in/arjavpa/")}
-                  {person("Joe Massa", joe, "Front-End Developer", "https://www.linkedin.com/in/arjavpa/")}
+                  {person("Joe Massa", joe, "NLP", "https://www.linkedin.com/in/joseph-massa-0497ba1b8/")}
                 </tr>
                 <tr>
                   {person("Alex Pakkala", alex, "Orchestrator", "https://www.linkedin.com/in/alexander-pakkala-7934911b6/")}
