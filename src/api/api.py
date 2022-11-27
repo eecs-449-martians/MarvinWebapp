@@ -42,15 +42,18 @@ def upload_pdfs():
         return {"message": message, "already_exists": True}
     
     path = Path("../pdf_uploads/" + fileobj.filename)
-    print(f"Gonna save to {path}")
+    print(f"     {path}")
     fileobj.save(path)
     print("Just saved with name:", fileobj.filename)
-    filename = fileobj.filename
+    filename = str(fileobj.filename)
     url = path
-    json_string = json.dumps({'url': url, 'filename': filename})
+    json_string = json.dumps({'url': str(url), 'filename': str(filename)})
     fileobj.close()
 
+    print('sending request')
     r = requests.post('http://127.0.0.1:8002/orch/upload_file', json=json_string)
+    print('gettting request')
+
     if not r.json()['Success']:
         return {"message": f"Error processing file {fileobj.filename}", "already_exists": False}
     message = "'" + fileobj.filename + "' was uploaded successfully"
