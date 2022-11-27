@@ -11,6 +11,7 @@ from urllib.parse import urlparse
 app = flask.Flask(__name__)
 
 messages = [] # contains message --> [message_type (0: from_user, 1: from_marvin, 2: placeholder), content]
+CHATBOT_CALL = 
 
 @app.route('/reset')
 def reset_app():
@@ -52,8 +53,7 @@ def get_files():
     index = 0
     num_files = len(os.listdir(folder))
     for filename in os.listdir(folder):
-
-        #curr_file = "file://" + folder + filename
+        curr_file = "file://" + folder + filename
         curr_file = folder + filename
         json_string += "\n\t{ "
         json_string += "\n\t\t\"file\": { \"name\": \"" + filename + "\", \"url\": \"" + curr_file + "\" }, "
@@ -65,33 +65,8 @@ def get_files():
     json_string += "\n]\n}"
     json_object = json.loads(json_string)
 
-    # here I call the pdf api for each .pdf file uploaded.
-    # THIS MAY OR MAY NOT BE THE ENPOINT WE WANT TO DO THIS IN, DEPENDING ON IMPLEMENTATION OF CHATBOT LOGIC so the rest of the function is subject to move. 
-    pdf_texts = []
-    for i in range(len(json_object['data'])):
-        query = {'url': json_object['data'][i]['file']['url']}
-        pdf_texts.append(requests.post("http://localhost:8001/pdf/to_text/", params=query))
-
-    # here I call the nlp api for each text version of the given files to get question and answers.
-    # NOTE: this may or not be correct, I am having trouble testing the nlp flask server 
-    # basically this gives a json object of question and answers
-    nlp = []
-    questions = []
-    answers = []
-    qas = []
-    # untested -> Josh changed query to work with NLP
-    for text in pdf_texts:
-        rq_body = {"text": text}
-        r = requests.post("http://localhost:8000/nlp/genqa/", json=rq_body)
-        qas.append(r["qas"])
     
-    for qa_pair in qas:
-        questions.append(qa_pair["question"])
-        answers.append(qa_pair["answer"])
-    nlp["questions"] = questions
-    nlp["answers"] = answers
-    nlp["qas"] = qas
-    return flask.jsonify(nlp)
+    return flask.jsonify(json_object)
 
 @app.route('/remove_file', methods=["POST"])
 def remove_files():
@@ -148,6 +123,7 @@ def to_user():
     content = flask.request.form['content']
     messages.append([1, content])
 
+    req = requests.
     response_message = "Message sent to User successfully"
     return {"message": response_message}
 
