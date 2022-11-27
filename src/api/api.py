@@ -42,7 +42,17 @@ def upload_pdfs():
         return {"message": message, "already_exists": True}
     
     path = Path("../pdf_uploads/" + fileobj.filename)
+    print(f"Gonna save to {path}")
     fileobj.save(path)
+    print("Just saved with name:", fileobj.filename)
+    filename = fileobj.filename
+    url = path
+    json_string = json.dumps({'url': url, 'filename': filename})
+    fileobj.close()
+
+    r = requests.post('http://127.0.0.1:8002/orch/upload_file', json=json_string)
+    if not r.json()['Success']:
+        return {"message": f"Error processing file {fileobj.filename}", "already_exists": False}
     message = "'" + fileobj.filename + "' was uploaded successfully"
     return {"message": message, "already_exists": False}
 
@@ -113,21 +123,28 @@ def get_messages():
 def to_marvin():
     content = flask.request.form['content']
     messages.append([0, content]) 
+
     # make api call to conv engine
+    json_string = json.dumps({'text': content})
+    r = requests.post('http://127.0.0.1:8003/chatbot/chat', json=json_string)
+    response_text = r.json()['text']
 
-    response_message = "Message sent to Marvin successfully"
-    return {"message": response_message}
+    # Append returned response to messages
+    messages.append([1, response_text])
 
-@app.route('/to_user', methods=["POST"])
-def to_user():
-    content = flask.request.form['content']
-    messages.append([1, content])
+    #response_message = "Message sent to Marvin successfully"
+    return {"message": response_text}
 
-    #MY STUFF
-    query = {'text': content}
-    r = requests.post("http://localhost:8003/chatbot/chat", params=query)
-    response_message = r['text']
-    return {"message": response_message}
+# @app.route('/to_user', methods=["POST"])
+# def to_user(content):
+#     #content = flask.request.form['content']
+#     messages.append([1, content])
+
+#     #MY STUFF
+#     query = {'text': content}
+#     r = requests.post("http://localhost:8003/chatbot/chat", json=query)
+#     response_message = r.json()['text']
+#     return {"message": response_message}
 
 @app.route('/clear_messages')
 def clear_messages():
