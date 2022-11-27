@@ -124,6 +124,10 @@ export default class UploadFiles extends Component {
         });
     }
 
+    startChat = async () => {
+      await UploadService.sendMessage("")
+    }
+
     render() {
         const { selectedFiles, currentFile, progress, message, fileInfos } = this.state;
     
@@ -205,7 +209,8 @@ export default class UploadFiles extends Component {
               <a href="/chat">
                 <button 
                   className="btn btn-go-to-chat"
-                  disabled={this.state.fileInfos.length === 0}>
+                  disabled={this.state.fileInfos.length === 0}
+                  onClick={this.startChat}>
                   Get Studying &gt;
                 </button>
               </a>
