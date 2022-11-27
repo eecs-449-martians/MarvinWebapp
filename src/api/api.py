@@ -11,7 +11,7 @@ from urllib.parse import urlparse
 app = flask.Flask(__name__)
 
 messages = [] # contains message --> [message_type (0: from_user, 1: from_marvin, 2: placeholder), content]
-CHATBOT_CALL = 
+CHATBOT_CALL = "curl -X POST http://localhost:8003/chatbot/chat  -H 'Content-Type: application/json' -d '{}' > {}"
 
 @app.route('/reset')
 def reset_app():
@@ -123,8 +123,10 @@ def to_user():
     content = flask.request.form['content']
     messages.append([1, content])
 
-    req = requests.
-    response_message = "Message sent to User successfully"
+    #MY STUFF
+    query = {'text': content}
+    r = requests.post("http://localhost:8003/chatbot/chat", params=query)
+    response_message = r['text']
     return {"message": response_message}
 
 @app.route('/clear_messages')
