@@ -45,13 +45,13 @@ def upload_pdfs():
     print(f"     {path}")
     fileobj.save(path)
     print("Just saved with name:", fileobj.filename)
-    filename = str(fileobj.filename)
+    filename = fileobj.filename
     url = path
-    json_string = json.dumps({'url': str(url), 'filename': str(filename)})
+    json_payload ={'url': str(url), 'filename': str(filename)}
     fileobj.close()
 
     print('sending request')
-    r = requests.post('http://127.0.0.1:8002/orch/upload_file', json=json_string)
+    r = requests.post('http://127.0.0.1:8002/orch/upload_file', json=json_payload)
     print('gettting request')
 
     if not r.json()['Success']:
@@ -128,8 +128,9 @@ def to_marvin():
     messages.append([0, content]) 
 
     # make api call to conv engine
-    json_string = json.dumps({'text': content})
-    r = requests.post('http://127.0.0.1:8003/chatbot/chat', json=json_string)
+    # json_string = json.dumps({'text': content})
+    r = requests.post('http://127.0.0.1:8003/chatbot/chat', json={'text': content})
+    print(r)
     response_text = r.json()['text']
 
     # Append returned response to messages
