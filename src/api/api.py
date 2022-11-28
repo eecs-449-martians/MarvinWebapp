@@ -76,6 +76,7 @@ def get_files():
             json_string += ","
         index += 1
     json_string += "\n]\n}"
+    print(json_string)
     json_object = json.loads(json_string)
 
     
@@ -84,6 +85,8 @@ def get_files():
 @app.route('/remove_file', methods=["POST"])
 def remove_files():
     file_name = flask.request.form['filename']
+
+    #TODO: send matching file delete request to
 
     folder = "../pdf_uploads/"
     curr_file = os.path.join(folder, file_name)
@@ -98,29 +101,46 @@ def remove_files():
 @app.route('/get_messages')
 def get_messages():
     all_padding = len(messages) == 0
-    index = 0
+    # index = 0
     padded_messages = messages.copy()
     while (len(padded_messages) < 10):
         padded_messages.append([2, "-"])
-    num_messages = len(padded_messages)
-    json_string = "{\n\"messages\": [ "
+    # num_messages = len(padded_messages)
+    # json_string = "{\n\"messages\": [ "
+    json_messages = []
     for message in padded_messages:
-        json_string += "\n\t{ "
-        json_string += "\n\t\t\"message\": { \"message_type\": \"" + str(message[0]) + "\", \"content\": \"" + message[1] + "\" } "
-        json_string += "\n\t}"
-        if index < num_messages - 1:
-            json_string += ","
-        index += 1
+        message_conts = {"message":{"message_type":str(message[0]), "content": message[1] } }
+        # json_string += "\n\t{ "
+        # json_string += "\n\t\t\"message\": { \"message_type\": \"" + str(message[0]) + "\", \"content\": \"" + message[1] + "\" } "
+        # json_string += "\n\t}"
+        # if index < num_messages - 1:
+        #     json_string += ","
+        # index += 1
+        json_messages.append(message_conts)
+    
+    
 
-    json_string += "\n],"
-    json_string += "\n\"all_padding\": " + str(all_padding).lower() + ","
+    # json_string += "\n],"
+    # json_string += "\n\"all_padding\": " + str(all_padding).lower() + ","
 
     last_user = 0
     if (len(messages) > 0):
         last_user = messages[-1][0]
-    json_string += "\n\"last_message_from_user\": " + str(last_user == 0).lower() + "\n}"
-    json_object = json.loads(json_string)
-    return json_object
+    # json_string += "\n\"last_message_from_user\": " + str(last_user == 0).lower() + "\n}"
+    return flask.jsonify(messages=json_messages,all_padding=str(all_padding).lower(), last_message_from_user=str(last_user==0).lower())
+
+# {
+# "messages": [ 
+# 	{ 
+# 		"message": { "message_type": "1", "content": "This course will have a large team-based project that will require designing and building a virtual  assistant. All students are required to observe the Engineering  Honor Code in all assignments and exams.
+ 
+#  Would you like the full passage instead of just a summarization?" } 
+# 	}
+# ],
+# "all_padding": false,
+# "last_message_from_user": false
+# }
+
 
 @app.route('/to_marvin', methods=["POST"])
 def to_marvin():

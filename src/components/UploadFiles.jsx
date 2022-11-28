@@ -125,7 +125,7 @@ export default class UploadFiles extends Component {
     }
 
     startChat = async () => {
-      await UploadService.sendMessage("")
+      await UploadService.sendMessage(" Hi Marvin!! ")
     }
 
     render() {
