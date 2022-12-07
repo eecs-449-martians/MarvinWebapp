@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import project_pitch from "./static_files/project_pitch.pdf";
 import midpoint_update from "./static_files/midpoint_update.pdf";
-import final_presentation from "./static_files/midpoint_update.pdf";
+import final_presentation from "./static_files/final_presentation.pdf";
 import zach from "./images/zach.jpg";
 import ray from "./images/ray.jpg";
 import connor from "./images/connor.jpg";
